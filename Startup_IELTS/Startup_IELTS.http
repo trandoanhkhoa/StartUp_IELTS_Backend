@@ -1,0 +1,6 @@
+@Startup_IELTS_HostAddress = http://localhost:5101
+
+GET {{Startup_IELTS_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
