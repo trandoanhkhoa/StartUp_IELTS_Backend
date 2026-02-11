@@ -22,8 +22,7 @@ public partial class StartupIeltsContext : DbContext
     public virtual DbSet<Writing> Writings { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-
-        => optionsBuilder.UseNpgsql("Host=localhost; Port=5432; Database=startup_ielts;Username=postgres;Password=quenmkroi000");
+        => optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=startup_ielts;Username=postgres;Password=quenmkroi000;Ssl Mode=Disable;Trust Server Certificate=true");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -68,7 +67,6 @@ public partial class StartupIeltsContext : DbContext
             entity.Property(e => e.RoleId).HasColumnName("role_id");
             entity.Property(e => e.UpdatedAt)
                 .HasDefaultValueSql("CURRENT_TIMESTAMP")
-                .HasColumnType("timestamp without time zone")
                 .HasColumnName("updated_at");
 
             entity.HasOne(d => d.Role).WithMany(p => p.Users)
@@ -83,20 +81,20 @@ public partial class StartupIeltsContext : DbContext
             entity.ToTable("writings");
 
             entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.GradedAt)
-                .HasColumnType("timestamp without time zone")
-                .HasColumnName("graded_at");
+            entity.Property(e => e.Category).HasColumnName("category");
+            entity.Property(e => e.GradedAt).HasColumnName("graded_at");
             entity.Property(e => e.Hide)
                 .HasDefaultValue(false)
                 .HasColumnName("hide");
             entity.Property(e => e.ImageUrl).HasColumnName("image_url");
             entity.Property(e => e.Question).HasColumnName("question");
-            entity.Property(e => e.SubmittedAt)
-                .HasColumnType("timestamp without time zone")
-                .HasColumnName("submitted_at");
+            entity.Property(e => e.Source).HasColumnName("source");
+            entity.Property(e => e.SubmittedAt).HasColumnName("submitted_at");
             entity.Property(e => e.TaskType)
                 .HasMaxLength(20)
                 .HasColumnName("task_type");
+            entity.Property(e => e.Title).HasColumnName("title");
+            entity.Property(e => e.Type).HasColumnName("type");
         });
 
         OnModelCreatingPartial(modelBuilder);

@@ -18,4 +18,12 @@ public partial class Writing
     public DateTime? SubmittedAt { get; set; }
 
     public DateTime? GradedAt { get; set; }
+
+    public string? Title { get; set; }
+
+    public string? Type { get; set; }
+
+    public string? Source { get; set; }
+
+    public string? Category { get; set; }
 }

@@ -25,6 +25,10 @@ namespace Startup_IELTS.Controllers.Admin
                 TaskType = dto.TaskType,
                 ImageUrl = dto.ImageUrl,
                 Question = dto.Question,
+                Title = dto.Title,
+                Category = dto.Category,
+                Type = dto.Type,
+                Source = dto.Source,
                 Hide = dto.Hide ?? false,
 
             };
@@ -43,6 +47,10 @@ namespace Startup_IELTS.Controllers.Admin
             writing.TaskType = dto.TaskType;
             writing.ImageUrl = dto.ImageUrl;
             writing.Question = dto.Question;
+            writing.Title = dto.Title;
+            writing.Category = dto.Category;
+            writing.Type = dto.Type;
+            writing.Source = dto.Source;
             writing.Hide = dto.Hide;
 
             await _db.SaveChangesAsync();
@@ -78,6 +86,10 @@ namespace Startup_IELTS.Controllers.Admin
                     TaskType = item.TaskType,
                     ImageUrl = item.ImageUrl,
                     Question = item.Question,
+                    Type = item.Type,
+                    Title = item.Title,
+                    Category = item.Category,
+                    Source = item.Source,
                     Hide = item.Hide
                 });
             }
